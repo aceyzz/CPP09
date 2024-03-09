@@ -6,7 +6,7 @@
 /*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:23:02 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/03/09 17:11:57 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/03/09 17:48:31 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <algorithm>
 #include <utility>
 
-#define DATAPATH "./db/data.csv"
+#define DATAPATH "./data/data.csv"
 
 class	BitcoinExchange
 {
