@@ -6,7 +6,7 @@
 /*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:34:19 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/03/09 17:11:31 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:06:41 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,22 @@ void	BitcoinExchange::parseData()
 		if (!isValidDate(date))
 			throw InvalidDateFormatException();
 
-		try {
-			exchangeRate = std::stof(exchangeRateStr);
-		} catch (const std::invalid_argument &e) {
-			throw InvalidFormatException();
-		} catch (const std::out_of_range &e) {
-			throw LargeNumberException();
+		for (size_t i = 0; i < exchangeRateStr.size(); i++)
+		{
+			if (exchangeRateStr[i] == ',')
+				exchangeRateStr[i] = '.';
+			else if (!isdigit(exchangeRateStr[i]) && exchangeRateStr[i] != '.')
+				throw InvalidFormatException();
 		}
 
-		if (exchangeRate < 0.0f)
+		try
+		{
+			exchangeRate = std::stod(exchangeRateStr);
+		}
+		catch (const std::invalid_argument &e) { throw InvalidFormatException(); }
+		catch (const std::out_of_range &e) { throw LargeNumberException(); }
+
+		if (exchangeRate < 0.0)
 			throw OutOfRangeException();
 
 		_rates[date] = exchangeRate;
@@ -131,13 +138,22 @@ std::pair<std::string, double>	BitcoinExchange::getExchangeRateForDate(const std
 		throw InvalidDateFormatException();
 
 	std::map<std::string, double>::const_iterator it = _rates.lower_bound(date);
-	// pour etre sur de ne rien edit, const_iterator
 
-	if (it == _rates.begin() && date < it->first)// Si pas de date antérieure
+	if (it == _rates.begin() && date < it->first)
 		throw DateNotFoundException();
-	
-	if (it == _rates.end() || it->first > date)// Si on a depassé la date
-		--it;// on recule pour avoir la date antérieure
-	
+
+	if (it == _rates.end())
+	{
+		if (date < _rates.begin()->first)
+			throw DateNotFoundException();
+		--it;
+	}
+	else if (it->first > date)
+	{
+		if (it == _rates.begin())
+			throw DateNotFoundException();
+		--it;
+	}
+
 	return (std::make_pair(it->first, it->second));
 }

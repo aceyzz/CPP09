@@ -6,7 +6,7 @@
 /*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 15:03:15 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/03/09 17:47:34 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:09:54 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ void fileMode(const std::string &filename, BitcoinExchange &btc)
         try
 		{
             value = std::stod(valueStr);
+			for (size_t i = 0; i < valueStr.size(); i++)
+			{
+				if (!isdigit(valueStr[i]) && valueStr[i] != '.')
+					throw std::invalid_argument("Invalid character");
+			}
         }
 		catch (...)
 		{
