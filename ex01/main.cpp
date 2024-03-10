@@ -6,11 +6,21 @@
 /*   By: cedmulle <cedmulle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 09:09:18 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/03/10 09:44:51 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/03/10 10:00:03 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+/*
+
+	Container used : std::stack< int >
+	
+	- If 0 argument, goes into interactive mode
+	- If 1 argument, goes into normal mode
+	- If more, error
+
+*/
 
 inline void cleanInput(std::string& input)
 {
