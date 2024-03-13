@@ -3,7 +3,10 @@
 <br>
 
 
-## Sujet : Exercise 00 - Bitcoin Exchange
+## Exercise 00 - Bitcoin Exchange
+
+<details>
+  <summary>Afficher/Masquer</summary>
 
 ### Objectif :
 
@@ -64,13 +67,18 @@ Error: too large a number.
 
 > Cet exercice illustre l'utilisation des conteneurs, la gestion des exceptions, et le traitement des données issues de fichiers.
 
+</details>
+
 <br>
 
 ---
 
 <br>
 
-## Sujet : Exercise 01 - RPN
+## Exercise 01 - RPN
+
+<details>
+  <summary>Afficher/Masquer</summary>
 
 #### Objectif :
 
@@ -118,6 +126,8 @@ Error
 
 > Cet exercice illustre la manipulation d'expressions mathématiques en notation polonaise inversée (RPN), l'utilisation de conteneurs pour stocker des données, et la gestion des erreurs à travers des exceptions personnalisées.
 
+</details>
+
 <br>
 
 ---
@@ -125,6 +135,9 @@ Error
 <br>
 
 ## Exercise : 02 - PmergeMe
+
+<details>
+  <summary>Afficher/Masquer</summary>
 
 #### Objectif :
 Créer un programme capable de trier une séquence d'entiers positifs en utilisant l'algorithme de tri par fusion-insertion (Ford-Johnson). Le programme doit être capable de gérer au moins 3000 entiers différents.
@@ -169,6 +182,8 @@ Time to process a range of 5 elements with std::list : 0.00014 us
 <br>
 
 *Cet exercice illustre l'utilisation de plusieurs conteneurs STL pour trier une grande quantité de données, tout en gérant les erreurs de manière appropriée.*
+
+</details>
 
 <br>
 
